@@ -23,8 +23,10 @@ app.get("/", (req, res) => {
 });
 
 const playerRouter = require("./Routers/playerRouter");
+const detailsRouter = require("./Routers/detailsRoter");
 //routers
 app.use("/players", playerRouter);
+app.use("/playerdetails", detailsRouter);
 
 app.listen(port, () => {
   console.log(`Server is listening to port: ${port}`);

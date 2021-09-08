@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetchAPI from "../../Custom Hooks/useFetchAPI";
 import classes from "./HomePage.module.css";
 import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const fetchURL = "http://localhost:5050/players";
@@ -22,6 +23,7 @@ export default function HomePage() {
               .slice(pageVisited, pageVisited + usersPerPage)
               .map((data, pos) => {
                 const {
+                  _id,
                   playerName,
                   from,
                   price,
@@ -32,7 +34,10 @@ export default function HomePage() {
                   photo,
                 } = data;
                 return (
-                  <div className={classes.playerCard}>
+                  <Link
+                    className={classes.playerCard}
+                    to={`/playerdetails/${_id}`}
+                  >
                     <div className={classes.cardLeftDiv}>
                       <img src={photo} alt={playerName} />
                     </div>
@@ -43,7 +48,7 @@ export default function HomePage() {
                       <h4>{isPlaying ? "Playing" : "Not Playing"}</h4>
                       <h4>Role: {description}</h4>
                     </div>
-                  </div>
+                  </Link>
                 );
               })
           : setplayerArray(apiResults.data)}
@@ -63,6 +68,7 @@ export default function HomePage() {
       ) : (
         <div>
           {displayPlayer()}
+
           <ReactPaginate
             previousLabel="Previous"
             nextLabel="Next"
