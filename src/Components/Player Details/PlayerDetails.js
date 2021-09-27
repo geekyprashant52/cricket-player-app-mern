@@ -5,7 +5,7 @@ import classes from "./PlayerDetails.module.css";
 
 export default function PlayerDetails(props) {
   const id = useParams().id;
-  const url = `http://localhost:5050/playerdetails/${id}`;
+  const url = `https://cricket-player-app-backend.herokuapp.com/playerdetails/${id}`;
   const { apiResults, isLoading } = useFetchAPI(url);
   const [playerDetails, setplayerDetails] = useState();
   console.log(apiResults);

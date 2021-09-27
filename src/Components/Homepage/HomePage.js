@@ -5,7 +5,7 @@ import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
-  const fetchURL = "http://localhost:5050/players";
+  const fetchURL = "https://cricket-player-app-backend.herokuapp.com/players";
   const { apiResults, isLoading } = useFetchAPI(fetchURL);
   const [playerArray, setplayerArray] = useState();
   console.log(apiResults);

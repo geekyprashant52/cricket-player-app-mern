@@ -27,6 +27,9 @@ const detailsRouter = require("./Routers/detailsRoter");
 //routers
 app.use("/players", playerRouter);
 app.use("/playerdetails", detailsRouter);
+app.use((req, res, next) => {
+  res.status(404).send("404: Page Not Found");
+});
 
 app.listen(port, () => {
   console.log(`Server is listening to port: ${port}`);
